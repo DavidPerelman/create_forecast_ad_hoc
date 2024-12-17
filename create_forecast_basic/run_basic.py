@@ -1,20 +1,25 @@
+import papermill as pm
 import os
-import subprocess
 
-path = os.getcwd()
-software_folder_location = r'{}\create_forecast_basic_ad_hoc'.format(path)
-
-def run_notebook(notebook_path):
+def run_notebook(notebook_path, params):
+    """
+    הרצת מחברת Jupyter עם פרמטרים נתונים.
+    
+    notebook_path: נתיב למחברת ה-Jupyter.
+    params: מילון פרמטרים שיש להעביר למחברת.
+    
+    מחזירה True אם ההרצה הצליחה, אחרת False.
+    """
     try:
-        subprocess.check_call(['jupyter', 'nbconvert', '--to', 'notebook', '--execute', notebook_path])
+        # הפעלת המחברת עם פרמטרים
+        output_notebook_path = notebook_path.replace('.ipynb', '_output.ipynb')  # נתיב למחברת הפלט
+        pm.execute_notebook(
+            notebook_path,  # נתיב למחברת המקורית
+            output_notebook_path,  # נתיב לפלט (מחברת חדשה)
+            parameters=params  # פרמטרים למחברת
+        )
+        print(f"Notebook executed successfully: {output_notebook_path}")
         return True
-    except subprocess.CalledProcessError as e:
-        print(f"שגיאה בהרצת המחברת: {e}")
-        print(f"פלט הפקודה: {e.output}")
+    except Exception as e:
+        print(f"Error executing notebook: {str(e)}")
         return False
-
-if __name__ == "__main__":
-    notebook_path = r'{}\run_basic.ipynb'.format(software_folder_location)
-    run_notebook(notebook_path, encoding="utf8")
-    execution_result = run_notebook(notebook_path, encoding="utf8")
-    print("basic-Notebook execution result:", execution_result)
