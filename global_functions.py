@@ -93,12 +93,12 @@ def find_files_with_pattern(folder_path, pattern):
                 files.append(os.path.join(root, filename))
     return files
 
-# def find_files_with_pattern(folder_path, pattern, suffix):
-#     """
-#     מוצא קבצים בתיקייה עם תבנית מסוימת וסיומת.
-#     """
-#     return [
-#         os.path.join(folder_path, file) 
-#         for file in os.listdir(folder_path) 
-#         if pattern in file and file.endswith(suffix)
-#     ]
+def find_geographic_layers(folder_path, pattern, suffix):
+    """
+    מוצא קבצים בתיקייה עם תבנית מסוימת וסיומת.
+    """
+    return [
+        os.path.join(folder_path, file) 
+        for file in os.listdir(folder_path) 
+        if pattern in file and file.endswith(suffix)
+    ]

@@ -4,5 +4,5 @@ fiona
 geopandas
 ipykernel
 jupyter
-openpyxl
 pandas
+papermill
