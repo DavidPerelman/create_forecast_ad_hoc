@@ -1,0 +1,8 @@
+pywin32==307 
+pyyaml
+fiona
+geopandas
+ipykernel
+jupyter
+openpyxl
+pandas
