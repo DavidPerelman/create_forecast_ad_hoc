@@ -6,3 +6,4 @@ ipykernel
 jupyter
 pandas
 papermill
+ipython
